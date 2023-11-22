@@ -1,7 +1,52 @@
+var button1 = document.querySelector("#button1")
+
+function saveAction1 () {
+  console.log("Saving on button 1!")
+  var text1 = document.querySelector("#text1");
+  var textToSave = text1.value;
+
+  localStorage.setItem("text1", textToSave)
+}
+
+function loadAction1 () {
+  var savedText = localStorage.getItem("text1");
+
+  var text1 = document.querySelector("#text1");
+  text1.value = savedText
+}
+
+button1.addEventListener("click", saveAction1)
+
+loadAction1()
+
+//////////////////////////////////////////////////////////
+
+var button2 = document.querySelector("#button2")
+
+function saveAction2 () {
+  console.log("Saving on button 2!")
+}
+
+button2.addEventListener("click", saveAction2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+// $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -20,4 +65,4 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+// });
