@@ -1,33 +1,145 @@
-var button1 = document.querySelector("#button1")
+// var button = document.querySelector("#button")
+var buttons = $(".saveBtn")
+// var buttons = document.querySelectorAll(".saveBtn")
 
-function saveAction1 () {
-  console.log("Saving on button 1!")
-  var text1 = document.querySelector("#text1");
-  var textToSave = text1.value;
+function saveAction () {
+  console.log("Saving!")
 
-  localStorage.setItem("text1", textToSave)
+  var textToSave = this.previousElementSibling.value
+  var key = this.previousElementSibling.previousElementSibling.textContent
+  
+  localStorage.setItem(key, textToSave)
+  
+  // console.log("Saving on button!")
+  // var text = document.querySelector("#text");
+  // var textToSave = text.value;
+
+  // localStorage.setItem("text", textToSave)
 }
 
-function loadAction1 () {
-  var savedText = localStorage.getItem("text1");
+function loadAction () {
+  var textareas = $(".description")
 
-  var text1 = document.querySelector("#text1");
-  text1.value = savedText
+  textareas.each(function() {
+    var key = this.previousElementSibling.textContent;
+
+    var savedText = localStorage.getItem(key)
+
+    this.value = savedText
+
+  })
+
+  // var savedText = localStorage.getItem("text");
+
+  // var text = document.querySelector("#text");
+  // text.value = savedText
 }
 
-button1.addEventListener("click", saveAction1)
 
-loadAction1()
+function loadColor () {
+  var divs = $(".row")
+
+  var currentHour = dayjs().hour();
+  // var currentHour = 12
+
+  divs.each(function() {
+    console.log(this)
+
+    var hour = this.id.split("-")[1]
+    // hour-9
+    // ["hour", "9"]
+    //    0      1
+
+    if(currentHour > hour) {
+      this.classList.add("past")
+    }
+
+    if(currentHour == hour) {
+      this.classList.add("present")
+    }
+
+    if(currentHour < hour) {
+      this.classList.add("future")
+    }
+  })
+}
+
+// for(i = 0; i < buttons.length; i++) {
+//   buttons[i].addEventListener("click", saveAction)
+// }
+buttons.on("click", saveAction)
+
+loadAction()
+
+loadColor()
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////
 
-var button2 = document.querySelector("#button2")
+// var button2 = document.querySelector("#button2")
 
-function saveAction2 () {
-  console.log("Saving on button 2!")
-}
+// function saveAction2 () {
+//   console.log("Saving on button 2!")
+//   var text2 = document.querySelector("#text2");
+//   var textToSave = text2.value;
 
-button2.addEventListener("click", saveAction2)
+//   localStorage.setItem("text2", textToSave)
+// }
+
+// function loadAction2 () {
+//   var savedText = localStorage.getItem("text2");
+
+//   var text2 = document.querySelector("#text2");
+//   text2.value = savedText
+// }
+
+// button2.addEventListener("click", saveAction2)
+
+// loadAction2()
+
+// //////////////////////////////////////////////////////////
+// var button3 = document.querySelector("button3")
+
+// function saveaction4 () {
+//   console.log("Saving on button 3!")
+// }
+
+  
+//   button3.addEventListener("click",saveAction3)
+// //////////////////////////////////////////////////////////
+// var button4 = document.querySelector("button4")
+
+// function saveaction4 () {
+//   console.log("Saving on button 4!")
+// }
+// button4.addEventListener("click" , saveaction4)
+// ///////////////////////////////////////////////
+// var button5 = document.querySelector("button5")
+
+// funciton saveaction5 () {
+//  console.log("Saving on button 5!") 
+// }
+
+
+// button5.addEventListener("click" .saveaction5)
+// ///////////////////////////////////////////////
+// var button5 = document.querySelector("button5"6
+
+// funciton saveaction5 () {
+//  console.log("Saving on button 6!") 
+// }
+
+
+// button5.addEventListener("click" .saveaction6)
 
 
 
